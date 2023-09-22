@@ -2,6 +2,7 @@
 
 import { ITodo, TTypedColumn } from '@/typings';
 import { Draggable, Droppable } from '@hello-pangea/dnd';
+import { TodoCard } from '../todoCard/TodoCard';
 
 type Props = {
   id: TTypedColumn;
@@ -29,6 +30,13 @@ export const Column = ({ id, todos, index }: Props) => {
                   {idToColumnText[id]}
                   <span className="text-gray-500 bg-gray-200 rounded-full px-2 py-1 text-sm font-normal">{todos.length}</span>
                 </h2>
+                <div className="space-y-2">
+                  {todos.map((todo, index) => (
+                    <Draggable draggableId={todo.$id} index={index} key={todo.$id}>
+                      {(provided) => <TodoCard todo={todo} index={index} id={id} innerRef={provided.innerRef} draggableProps={provided.draggableProps} dragHandleProps={provided.dragHandleProps} />}
+                    </Draggable>
+                  ))}
+                </div>
               </div>
             )}
           </Droppable>
