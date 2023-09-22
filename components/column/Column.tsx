@@ -3,6 +3,7 @@
 import { ITodo, TTypedColumn } from '@/typings';
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { PlusCircleIcon } from '@heroicons/react/20/solid';
+import { TodoCard } from '../todoCard/TodoCard';
 
 type Props = {
   id: TTypedColumn;
@@ -41,7 +42,7 @@ export const Column = ({ id, todos, index }: Props) => {
                 {provided.placeholder}
                 <div className="flex items-end justify-end">
                   <button className="text-green-500 hover:text-green-600">
-                    <PlusCircleIcon className="h-6 w-6" />
+                    <PlusCircleIcon className="h-10 w-10" />
                   </button>
                 </div>
               </div>
