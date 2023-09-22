@@ -36,6 +36,7 @@ export const Column = ({ id, todos, index }: Props) => {
                       {(provided) => <TodoCard todo={todo} index={index} id={id} innerRef={provided.innerRef} draggableProps={provided.draggableProps} dragHandleProps={provided.dragHandleProps} />}
                     </Draggable>
                   ))}
+                  {provided.placeholder}
                 </div>
               </div>
             )}

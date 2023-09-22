@@ -25,6 +25,7 @@ export const Board = () => {
                 <Column key={id} id={id} todos={column.todos} index={i} />
               ))
             }
+            {provided.placeholder}
           </div>
         )}
       </Droppable>
