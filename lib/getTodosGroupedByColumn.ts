@@ -25,7 +25,8 @@ export const getTodosGroupedByColumn = async () => {
     return acc;
   }, new Map<TTypedColumn, IColumn>());
 
-  // if columns doesnt have in-progress, todo and done, we add them with empty todos
+  // if columns dont have in-progress, todo and done, we add them with empty todos
+
   const columnTypes: TTypedColumn[] = ['todo', 'in-progress', 'done'];
 
   for (const columnType of columnTypes) {
