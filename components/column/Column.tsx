@@ -9,6 +9,14 @@ type Props = {
   index: number;
 };
 
+const idToColumnText: {
+  [key in TTypedColumn]: string;
+} = {
+  todo: 'To Do',
+  inprogress: 'in Progress',
+  done: 'Done',
+};
+
 export const Column = ({ id, todos, index }: Props) => {
   return (
     <Draggable draggableId={id} index={index}>

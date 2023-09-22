@@ -4,7 +4,7 @@ interface IBoard {
   columns: Map<TTypedColumn, IColumn>;
 }
 
-type TTypedColumn = 'todo' | 'in-progress' | 'done';
+type TTypedColumn = 'todo' | 'inprogress' | 'done';
 
 interface IColumn {
   id: TTypedColumn;
