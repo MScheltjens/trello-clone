@@ -4,7 +4,7 @@ import { ITodo, TTypedColumn } from '@/typings';
 import { Draggable, Droppable } from '@hello-pangea/dnd';
 import { PlusCircleIcon } from '@heroicons/react/20/solid';
 import { TodoCard } from '../todoCard/TodoCard';
-import { useBoardStore } from '@/store';
+import { useBoardStore, useModalStore } from '@/store';
 
 type Props = {
   id: TTypedColumn;
@@ -22,6 +22,7 @@ const idToColumnText: {
 
 export const Column = ({ id, todos, index }: Props) => {
   const [searchString] = useBoardStore((state) => [state.searchString]);
+  const openModal = useModalStore((state) => state.openModal);
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -33,7 +34,6 @@ export const Column = ({ id, todos, index }: Props) => {
                 <h2 className="flex justify-between font-bold text-xl p-2">
                   {idToColumnText[id]}
                   <span className="text-gray-500 bg-gray-200 rounded-full px-2 py-1 text-sm font-normal">{!searchString ? todos.length : todos.filter((todo) => todo.title.toLowerCase().includes(searchString.toLowerCase())).length}</span>
-                  {}
                 </h2>
                 <div className="space-y-2">
                   {todos.map((todo, index) => {
@@ -47,8 +47,8 @@ export const Column = ({ id, todos, index }: Props) => {
                   {provided.placeholder}
                 </div>
                 {provided.placeholder}
-                <div className="flex items-end justify-end">
-                  <button className="text-green-500 hover:text-green-600">
+                <div className="flex items-end justify-end pt-2">
+                  <button className="text-green-500 hover:text-green-600" onClick={openModal}>
                     <PlusCircleIcon className="h-10 w-10" />
                   </button>
                 </div>
