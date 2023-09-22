@@ -2,7 +2,7 @@
 
 import { useBoardStore } from '@/store';
 import { useEffect } from 'react';
-import { DragDropContext, DropResult, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult, Droppable } from '@hello-pangea/dnd';
 import { Column } from '../column/Column';
 
 export const Board = () => {
