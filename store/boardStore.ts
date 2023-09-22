@@ -8,20 +8,26 @@ interface IBoardState {
   getBoard: () => void;
   setBoardState: (board: IBoard) => void;
 
-  updateTodoDB: (todo: ITodo, columnId: string) => void;
-  deleteTodo: (todoIndex: number, todo: ITodo, id: TTypedColumn) => void;
-
   searchString: string;
   setSearchString: (searchString: string) => void;
+
+  newTaskInput: string;
+  setNewTaskInput: (newTaskInput: string) => void;
+
+  newTaskType: TTypedColumn;
+  setNewTaskType: (columnId: TTypedColumn) => void;
+
+  image: File | null;
+  setImage: (image: File | null) => void;
+
+  updateTask: (todo: ITodo, columnId: string) => void;
+  deleteTask: (todoIndex: number, todo: ITodo, id: TTypedColumn) => void;
 }
 
 export const useBoardStore = create<IBoardState>((set, get) => ({
   board: {
     columns: new Map<TTypedColumn, IColumn>(),
   },
-
-  searchString: '',
-  setSearchString: (searchString) => set({ searchString }),
 
   getBoard: async () => {
     const board = await getTodosGroupedByColumn();
@@ -30,14 +36,26 @@ export const useBoardStore = create<IBoardState>((set, get) => ({
 
   setBoardState: (board) => set({ board }),
 
-  updateTodoDB: async (todo, columnId) => {
+  searchString: '',
+  setSearchString: (searchString) => set({ searchString }),
+
+  newTaskInput: '',
+  setNewTaskInput: (newTaskInput) => set({ newTaskInput }),
+
+  newTaskType: 'todo',
+  setNewTaskType: (columnId) => set({ newTaskType: columnId }),
+
+  image: null,
+  setImage: (image) => set({ image }),
+
+  updateTask: async (todo, columnId) => {
     await databases.updateDocument(process.env.NEXT_PUBLIC_DATABASE_ID!, process.env.NEXT_PUBLIC_TODOS_COLLECTION_ID!, todo.$id, {
       title: todo.title,
       status: columnId,
     });
   },
 
-  deleteTodo: async (todoIndex, todo, id) => {
+  deleteTask: async (todoIndex, todo, id) => {
     const newColumns = new Map(get().board.columns);
     // delete todoId from newColumns
     newColumns.get(id)?.todos.splice(todoIndex, 1);
