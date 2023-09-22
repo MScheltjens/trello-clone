@@ -2,7 +2,7 @@
 
 ### A Trello Clone
 
-https://trello-clone-7df8fw567-mscheltjens.vercel.app/
+https://trello-clone-lemon-kappa.vercel.app/
 
 ## Used tech
 
