@@ -10,3 +10,7 @@ https://trello-clone-7df8fw567-mscheltjens.vercel.app/
 - openAI api
 - Drag and Drop (reacdt-beautiful-dnd -> @hello-pangea/dnd)
 - Zustand
+
+## possible optimalization
+
+- integrate useSWR / React query
