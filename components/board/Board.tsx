@@ -7,7 +7,7 @@ import { Column } from '../column/Column';
 import { IColumn } from '@/typings';
 
 export const Board = () => {
-  const [board, getBoard, setBoardState] = useBoardStore((state) => [state.board, state.getBoard, state.setBoardState]);
+  const [board, getBoard, setBoardState, updateTodoDB] = useBoardStore((state) => [state.board, state.getBoard, state.setBoardState, state.updateTodoDB]);
 
   useEffect(() => {
     getBoard();
@@ -72,7 +72,7 @@ export const Board = () => {
       newColumns.set(startCol.id, newCol);
       newColumns.set(endCol.id, { id: endCol.id, todos: finishTodos });
 
-      // update in DB
+      updateTodoDB(todoMoved, endCol.id);
 
       setBoardState({ ...board, columns: newColumns });
     }
