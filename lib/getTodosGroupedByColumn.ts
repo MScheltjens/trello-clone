@@ -1,4 +1,4 @@
-import { databases } from '@/appWrite';
+import { databases } from '@/config';
 
 import { IBoard, IColumn, TTypedColumn } from '@/typings';
 

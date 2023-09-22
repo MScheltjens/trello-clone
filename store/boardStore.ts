@@ -1,4 +1,4 @@
-import { databases } from '@/appWrite';
+import { databases } from '@/config';
 import { getTodosGroupedByColumn } from '@/lib';
 import { IBoard, IColumn, ITodo, TTypedColumn } from '@/typings';
 import { create } from 'zustand';
