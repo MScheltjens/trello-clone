@@ -3,9 +3,9 @@ import { RadioGroup } from '@headlessui/react';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 
 const types = [
-  { id: 'done', name: 'Done', description: 'A task that is done', color: 'bg-red-500' },
+  { id: 'todo', name: 'To Do', description: 'A task that needs to be done', color: 'bg-red-500' },
   { id: 'inprogress', name: 'In Progress', description: 'A taskt that is currentluy being worked on', color: 'bg-yellow-500' },
-  { id: 'todo', name: 'To Do', description: 'A task that needs to be done', color: 'bg-green-500' },
+  { id: 'done', name: 'Done', description: 'A task that is done', color: 'bg-green-500' },
 ];
 
 export const TaskTypeRadioGroup = () => {
