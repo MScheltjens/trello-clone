@@ -12,7 +12,19 @@ export const Board = () => {
     getBoard();
   }, [getBoard]);
 
-  const handleOnDragEnd = (result: DropResult) => {};
+  const handleOnDragEnd = (result: DropResult) => {
+    const { destination, source, type } = result;
+    // check if user dragged card outside of the board
+    if (!destination) return;
+
+    // handle column drag
+    if (type === 'column') {
+      const entries = Array.from(board.columns.entries());
+      const [removed] = entries.splice(source.index, 1);
+      entries.splice(destination.index, 0, removed);
+      const rearrangedColumns = new Map(entries);
+    }
+  };
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
