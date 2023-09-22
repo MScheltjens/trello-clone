@@ -1,5 +1,6 @@
-import { openai } from '@/openai';
 import { NextResponse } from 'next/server';
+
+import { openai } from '@/openAi';
 
 export async function POST(request: Request) {
   // todos in the body of POST request
