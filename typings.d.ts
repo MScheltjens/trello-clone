@@ -1,3 +1,5 @@
+import { Models } from 'appwrite';
+
 interface IBoard {
   columns: Map<TTypedColumn, IColumn>;
 }

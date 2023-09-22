@@ -1,3 +1,5 @@
+import { getTodosGroupedByColumn } from '@/lib';
+import { IBoard, IColumn, TTypedColumn } from '@/typings';
 import { create } from 'zustand';
 
 interface IBoardState {
@@ -5,7 +7,12 @@ interface IBoardState {
   getBoard: () => void;
 }
 
-const useBoardStore = create((set) => ({
-  board: null,
-  getBoard: () => {},
+export const useBoardStore = create<IBoardState>((set) => ({
+  board: {
+    columns: new Map<TTypedColumn, IColumn>(),
+  },
+  getBoard: async () => {
+    const board = await getTodosGroupedByColumn();
+    set({ board });
+  },
 }));
